@@ -12,13 +12,18 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/routes/app_pages.dart';
+import 'app/services/ad_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   /**
    * Initializing
    */
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+    AdService as = Get.find<AdService>();
+    as.showAppOpenAd();
+  });
+
   Future firebaseFuture =
       Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -47,6 +52,7 @@ Future<void> main() async {
   Get.put(MyRouteObserver());
   Get.put(StorageService(prefs));
   Get.put(PresetSettingService());
+  Get.put(AdService());
 
   runApp(ScreenUtilInit(
     designSize: const Size(390, 844),
