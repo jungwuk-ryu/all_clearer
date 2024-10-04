@@ -5,7 +5,11 @@ import 'package:allclearer/app/data/optional_time.dart';
 import 'package:allclearer/app/data/all_clear_page_arguments.dart';
 import 'package:allclearer/app/data/settings/setting_fast_forward.dart';
 import 'package:allclearer/app/services/preset_setting_service.dart';
+import 'package:allclearer/app/sync/ntp_time_sync.dart';
+import 'package:allclearer/app/sync/server_time_sync.dart';
 import 'package:allclearer/app/sync/time_sync.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -70,6 +74,18 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
      SettingFastForward setting = getSetting(SettingFastForward) as SettingFastForward;
      setting.getData().value = v;
     });
+
+    String? uri;
+    if (ts.runtimeType == NTPTimeSync) {
+     uri = (ts as NTPTimeSync).server;
+    } else if (ts.runtimeType == ServerTimeSync) {
+      uri = (ts as ServerTimeSync).uri.host;
+    }
+
+    Map<String, String> params = {'ts': ts.getID()};
+    if (uri != null) params['uri'] = uri;
+
+    FirebaseAnalytics.instance.logEvent(name: 'start_timer', parameters: params);
   }
 
   @override
@@ -131,6 +147,7 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
     } catch (e, st) {
       log('예외 발생', error: e, stackTrace: st);
       Get.snackbar('불러오지 못함', '시간을 불러오지 못했습니다(2)');
+      FirebaseCrashlytics.instance.recordError(e, st);
     } finally {
       _isRefreshing.value = false;
     }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:allclearer/app/sync/time_sync.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:http/http.dart' as http;
 
 class ServerTimeSync extends TimeSync {
@@ -40,6 +41,7 @@ class ServerTimeSync extends TimeSync {
       }
     } catch (e, st) {
       log('$e', error: e, stackTrace: st);
+      FirebaseCrashlytics.instance.recordError(e, st);
     }
 
     stopwatch.stop();
@@ -63,6 +65,7 @@ class ServerTimeSync extends TimeSync {
     } catch (e, st) {
       log('error', error: e, stackTrace: st);
       uri = Uri.parse('https://google.com');
+      FirebaseCrashlytics.instance.recordError(e, st);
     }
   }
 

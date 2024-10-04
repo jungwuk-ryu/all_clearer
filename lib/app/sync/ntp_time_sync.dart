@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:allclearer/app/sync/time_sync.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:ntp/ntp.dart';
 
 class NTPTimeSync extends TimeSync {
@@ -20,8 +21,9 @@ class NTPTimeSync extends TimeSync {
 
       Duration diff = now.difference(ntpTime);
       return diff;
-    } catch (e) {
+    } catch (e, st) {
       log(e.toString());
+      FirebaseCrashlytics.instance.recordError(e, st);
     }
 
     return null;

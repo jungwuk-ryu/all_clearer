@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,6 +56,7 @@ class NormalButton extends StatelessWidget {
       await callbackRet;
     } catch (e, st) {
       log('예외 발생', error: e, stackTrace: st);
+      FirebaseCrashlytics.instance.recordError(e, st);
     } finally {
       _isLoading.value = false;
     }

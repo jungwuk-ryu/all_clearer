@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
 class OptionalTime {
   static const String _minuteKey = 'minute';
   static const String _secondKey = 'second';
@@ -21,6 +23,7 @@ class OptionalTime {
           second: int.tryParse("${data[_secondKey]}"));
     } catch (e, st) {
       log('There is an error (OptionalTime.fromJson)', error: e, stackTrace: st);
+      FirebaseCrashlytics.instance.recordError(e, st);
       return const OptionalTime();
     }
   }
