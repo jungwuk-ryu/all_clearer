@@ -118,7 +118,13 @@ class HomeView extends GetView<HomeController> {
                       child: const BorderContainer(
                           title: '🇰🇷한국표준과학연구원(KRISS)',
                           body: '한국표준과학연구원(KRISS)이 제공하는 시간'),
-                    )
+                    ),
+                    GestureDetector(
+                      onTap: () => controller.toTimeSetPage(NTPTimeSync("time.kriss.re.kr")),
+                      child: const BorderContainer(
+                          title: '🇺🇸NIST(미국 국립표준기술연구소)',
+                          body: 'NIST(미국 국립표준기술연구소)가 제공하는 매우 정확한 시간'),
+                    ),
                   ],
                 ),
               ],
