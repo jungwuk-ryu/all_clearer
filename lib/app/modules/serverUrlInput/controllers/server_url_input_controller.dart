@@ -1,10 +1,13 @@
 import 'dart:developer';
+import 'dart:math' hide log;
 
 import 'package:allclearer/app/data/all_clear_preset.dart';
 import 'package:allclearer/app/data/optional_time.dart';
 import 'package:allclearer/app/sync/server_time_sync.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as html;
 
 import '../../../data/time_set_page_arguments.dart';
 import '../../../routes/app_pages.dart';
@@ -14,6 +17,7 @@ class ServerUrlInputController extends GetxController {
   final StorageService storage = Get.find<StorageService>();
   final TextEditingController _editingController = TextEditingController();
   final RxList<String> _recentHosts = RxList();
+  final Map<String, RxString> _webTitleRxMap = {};
 
   @override
   void onInit() {
@@ -114,5 +118,31 @@ class ServerUrlInputController extends GetxController {
 
   void removeHostFromRecentHostList(String host) {
     _recentHosts.remove(host);
+  }
+
+  RxString getWebTitle(String host) {
+    RxString? rx = _webTitleRxMap[host];
+    if (rx == null) {
+      rx = RxString('');
+      _webTitleRxMap[host] = rx;
+      _getWebTitle(host, rx);
+    }
+    
+    return rx;
+  }
+
+  Future<void> _getWebTitle(String host, RxString rx) async {
+    try {
+      Uri url = Uri.parse("http://$host");
+      var response = await http.get(url);
+      String htmlStr = response.body;
+      if (htmlStr.contains('<title>') && htmlStr.contains('</title>')) {
+        String? title = html.parse(htmlStr.split('<title>')[1].split('</title')[0]).body?.text;
+        if (title == null) return;
+        rx.value = title.substring(0, min(title.length, 50));
+      }
+    } catch (e) {
+      log('title을 불러오지 못함 : $host ($e)');
+    }
   }
 }

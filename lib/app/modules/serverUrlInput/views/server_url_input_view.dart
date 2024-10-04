@@ -64,9 +64,10 @@ class ServerUrlInputView extends GetView<ServerUrlInputController> {
                 controller.removeHostFromRecentHostList(host);
                 HapticFeedback.lightImpact();
               },
-              child: BorderContainer(
+              child: Obx(() => BorderContainer(
                 title: host,
-              ),
+                body: controller.getWebTitle(host).value,
+              )),
             );
           });
         },)),
