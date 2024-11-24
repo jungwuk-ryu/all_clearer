@@ -5,10 +5,10 @@
 티켓팅 / 수강신청을 위한 최고의 선택
 
 <img src="doc/graphic_1.jpeg" width="200"/>
-<img src="doc/graphic_2.jpeg" width="200"/>
-<img src="doc/graphic_3.jpeg" width="200"/>
-<img src="doc/graphic_4.jpeg" width="200"/>
-<img src="doc/graphic_5.jpeg" width="200"/>  
+<img src="doc/graphic_2.png" width="200"/>
+<img src="doc/graphic_3.png" width="200"/>
+<img src="doc/graphic_4.png" width="200"/>
+<img src="doc/graphic_5.png" width="200"/>  
 
 ## 특징    
 <img src="doc/screenshot_01.png" width="1000"/>  
