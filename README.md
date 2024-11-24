@@ -4,7 +4,7 @@
 
 티켓팅 / 수강신청을 위한 최고의 선택
 
-<img src="doc/graphic_1.jpeg" width="200"/>
+<img src="doc/graphic_1.png" width="200"/>
 <img src="doc/graphic_2.png" width="200"/>
 <img src="doc/graphic_3.png" width="200"/>
 <img src="doc/graphic_4.png" width="200"/>
