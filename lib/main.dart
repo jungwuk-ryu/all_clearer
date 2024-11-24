@@ -9,6 +9,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:keep_screen_on/keep_screen_on.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/routes/app_pages.dart';
@@ -23,6 +24,9 @@ Future<void> main() async {
     AdService as = Get.find<AdService>();
     as.showAppOpenAd();
   });
+
+  // 화면 켜짐 유지
+  KeepScreenOn.turnOn();
 
   Future firebaseFuture =
       Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
