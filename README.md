@@ -4,6 +4,13 @@
 
 티켓팅 / 수강신청을 위한 최고의 선택
 
+<img src="doc/graphic_1.jpeg" width="200"/>
+<img src="doc/graphic_2.jpeg" width="200"/>
+<img src="doc/graphic_3.jpeg" width="200"/>
+<img src="doc/graphic_4.jpeg" width="200"/>
+<img src="doc/graphic_5.jpeg" width="200"/>  
+
+  
 <img src="doc/screenshot_01.png" width="1000"/>   
 
 이 앱은 티켓팅 및 수강신청을 위해 가능한 정확한 서버 시간을 제공합니다.  
