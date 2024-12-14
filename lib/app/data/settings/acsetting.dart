@@ -2,14 +2,14 @@ import 'package:allclearer/app/modules/allClear/controllers/all_clear_controller
 import 'package:allclearer/app/services/storage_service.dart';
 import 'package:get/get.dart';
 
-abstract class ACSetting<DT> {
+abstract class ACSetting<T> {
   StorageService get storage => Get.find<StorageService>();
   AllClearController get controller => Get.find<AllClearController>();
   String _presetName = '';
 
   String getKey();
 
-  DT getData();
+  T getData();
 
   Future<void> tick(Duration leftTime) async {}
 
