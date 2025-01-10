@@ -1,7 +1,7 @@
+import 'package:allclearer/app/modules/allclear/bindings/all_clear_binding.dart';
+import 'package:allclearer/app/modules/allclear/views/all_clear_view.dart';
 import 'package:get/get.dart';
 
-import '../modules/allClear/bindings/all_clear_binding.dart';
-import '../modules/allClear/views/all_clear_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/presetList/bindings/preset_list_binding.dart';

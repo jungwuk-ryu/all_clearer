@@ -1,4 +1,4 @@
-import 'package:allclearer/app/modules/allClear/controllers/all_clear_controller.dart';
+import 'package:allclearer/app/modules/allclear/controllers/all_clear_controller.dart';
 import 'package:allclearer/app/services/storage_service.dart';
 import 'package:get/get.dart';
 
