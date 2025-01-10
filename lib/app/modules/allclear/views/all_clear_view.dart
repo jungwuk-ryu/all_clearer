@@ -13,6 +13,7 @@ import 'package:allclearer/app/ui/widgets/border_container.dart';
 import 'package:allclearer/app/ui/widgets/normal_button.dart';
 import 'package:allclearer/app/ui/widgets/padding_column.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -92,12 +93,12 @@ class AllClearView extends GetView<AllClearController> {
                       body: '3초 전부터 비프음을 울려요.',
                       checkBox: controller.getSetting(SettingBeep).getData()),
                 ]),
-                if (Platform.isAndroid || Platform.isIOS)
+                if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
                   const BorderContainer(
                       title: '📳진동',
                       body: '진동과 관련된 효과음',
                       backgroundColor: AppColors.grey),
-                if (Platform.isAndroid || Platform.isIOS)
+                if (!kIsWeb && (Platform.isAndroid || Platform.isIOS))
                   PaddingColumn(
                     children: [
                       BorderContainer(

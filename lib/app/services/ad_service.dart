@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -32,7 +33,7 @@ class AdService extends GetxService {
   // From https://github.com/deniza/app_tracking_transparency/issues/47#issuecomment-1751719988
   Future<TrackingStatus?> trackingTransparencyRequest() async {
     await Future.delayed(const Duration(milliseconds: 1000));
-    if (Platform.isIOS &&
+    if (!kIsWeb && Platform.isIOS &&
         int.parse(
                 Platform.operatingSystemVersion.split(' ')[1].split('.')[0]) >=
             14) {
