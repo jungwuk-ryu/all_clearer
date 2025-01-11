@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:allclearer/app/privates/firebase_function_helper.dart';
 import 'package:allclearer/app/sync/time_sync.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class ServerTimeSync extends TimeSync {
@@ -12,17 +14,41 @@ class ServerTimeSync extends TimeSync {
 
   ServerTimeSync(this.uri);
 
-  @override
-  Future<Duration?> getDifference() async {
-    final stopwatch = Stopwatch()..start();
+  Future<String?> _getServerDate() async {
+    String? serverTimeStr;
 
     try {
+    if (kIsWeb) {
+      http.Client client = http.Client();
+      http.Request req = http.Request(
+          'GET', Uri.parse("${FirebaseFunctionHelper().baseUrl}?url=$uri"));
+
+      final streamedResponse = await client.send(req);
+      final response = await http.Response.fromStream(streamedResponse);
+
+      serverTimeStr = json.decode(response.body)['serverTime'];
+    } else {
       http.Client client = http.Client();
       http.Request req = http.Request('HEAD', uri);
       req.followRedirects = false;
 
       final response = await client.send(req);
-      final String? serverTimeStr = response.headers['date'];
+      serverTimeStr = response.headers['date'];
+    }
+    } catch (e, st) {
+      log('$e', error: e, stackTrace: st);
+      FirebaseCrashlytics.instance.recordError(e, st);
+    }
+
+    return serverTimeStr;
+  }
+
+  @override
+  Future<Duration?> getDifference() async {
+    final stopwatch = Stopwatch()..start();
+
+    try {
+      String? serverTimeStr = await _getServerDate();
 
       if (serverTimeStr != null) {
         log("서버 시간 : $serverTimeStr");
@@ -71,10 +97,7 @@ class ServerTimeSync extends TimeSync {
 
   @override
   String toJson() {
-    Map data = {
-      'uri': uri.toString(),
-      'id': getID()
-    };
+    Map data = {'uri': uri.toString(), 'id': getID()};
 
     return json.encode(data);
   }
