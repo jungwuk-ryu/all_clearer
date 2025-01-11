@@ -22,6 +22,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../ui/themes/app_colors.dart';
 import '../../../ui/widgets/adaptive_wrap.dart';
+import '../../../ui/widgets/use_app_banner.dart';
 import '../controllers/all_clear_controller.dart';
 
 class AllClearView extends GetView<AllClearController> {
@@ -168,6 +169,7 @@ class AllClearView extends GetView<AllClearController> {
                         ),
                       ));
                 }),
+                if (kIsWeb) const UseAppBanner(),
               ],
             ))
           ],
