@@ -8,9 +8,9 @@ import 'package:allclearer/app/data/optional_time.dart';
 import 'package:allclearer/app/routes/my_route_observer.dart';
 import 'package:allclearer/app/services/storage_service.dart';
 import 'package:allclearer/app/sync/time_sync.dart';
+import 'package:basic_beep/basic_beep.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_beep/flutter_beep.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -68,7 +68,7 @@ class HomeController extends GetxController with WidgetsBindingObserver {
   }
 
   Future<void> beep() async {
-    FlutterBeep.playSysSound(iOSSoundIDs.KeyPressed1);
+    await BasicBeep.beep();
   }
 
   void toTimeSetPage(TimeSync ts) {
