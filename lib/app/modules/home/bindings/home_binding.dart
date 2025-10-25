@@ -1,6 +1,6 @@
+import 'package:allclearer/app/modules/home/controllers/home_controller.dart';
+import 'package:allclearer/app/services/app_sound_service.dart';
 import 'package:get/get.dart';
-
-import '../controllers/home_controller.dart';
 
 class HomeBinding extends Bindings {
   @override
@@ -8,5 +8,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(),
     );
+    Get.put(AppSoundService());
   }
 }
