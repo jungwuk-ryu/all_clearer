@@ -1,4 +1,3 @@
-import 'package:allclearer/app/services/app_sound_service.dart';
 import 'package:get/get.dart';
 
 import '../controllers/all_clear_controller.dart';
