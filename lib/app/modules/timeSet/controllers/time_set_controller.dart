@@ -45,16 +45,6 @@ class TimeSetController extends GetxController {
     _loadLastData();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   void _loadLastData() {
     OptionalTime data = preset.ot;
     int? second = data.second;

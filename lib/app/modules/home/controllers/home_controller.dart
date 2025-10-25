@@ -10,7 +10,6 @@ import 'package:allclearer/app/services/storage_service.dart';
 import 'package:allclearer/app/sync/time_sync.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_beep/flutter_beep.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -65,10 +64,6 @@ class HomeController extends GetxController with WidgetsBindingObserver {
     DateTime now = DateTime.now();
     time.value =
         "${now.year}.${now.month}.${now.day}. ${now.hour}시 ${now.minute}분 ${now.second.toString().padLeft(2, '0')}.${now.millisecond.toString().padLeft(3, '0')}초";
-  }
-
-  Future<void> beep() async {
-    FlutterBeep.playSysSound(iOSSoundIDs.KeyPressed1);
   }
 
   void toTimeSetPage(TimeSync ts) {
