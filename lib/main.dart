@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:allclearer/app/routes/my_route_observer.dart';
-import 'package:allclearer/core/bindings/main_bindings.dart';
+import 'package:allclearer/app/core/bindings/main_bindings.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
