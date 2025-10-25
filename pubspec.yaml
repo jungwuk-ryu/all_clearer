@@ -40,7 +40,6 @@ dependencies:
   http: ^1.2.2
   shimmer: ^3.0.0
   ntp: ^2.0.0
-  soundpool: ^2.4.1
   shared_preferences: ^2.3.2
   google_fonts: ^6.2.1
   html: ^0.15.4
@@ -51,7 +50,8 @@ dependencies:
   app_tracking_transparency: ^2.0.6
   keep_screen_on: ^5.0.0
   url_launcher: ^6.3.1
-  basic_beep: ^1.0.3
+  flutter_soloud: ^3.3.9
+  audio_session: ^0.2.2
 
 dev_dependencies:
   flutter_test:

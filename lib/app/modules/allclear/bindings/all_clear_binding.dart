@@ -9,6 +9,5 @@ class AllClearBinding extends Bindings {
     Get.lazyPut<AllClearController>(
       () => AllClearController(),
     );
-    Get.put(AppSoundService());
   }
 }
