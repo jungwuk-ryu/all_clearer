@@ -1,6 +1,7 @@
 import Flutter
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -8,6 +9,8 @@ import AVFoundation
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    MobileAds.shared.audioVideoManager.isAudioSessionApplicationManaged = true
+
     let audioSession = AVAudioSession.sharedInstance()
     do {
         try audioSession.setCategory(.playback, mode: .default, options: [])
@@ -16,6 +19,7 @@ import AVFoundation
         print("Failed to set audio session category.")
     }
     GeneratedPluginRegistrant.register(with: self)
+    
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
