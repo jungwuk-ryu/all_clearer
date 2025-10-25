@@ -89,11 +89,6 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void onClose() {
     _timer?.cancel();
     super.onClose();

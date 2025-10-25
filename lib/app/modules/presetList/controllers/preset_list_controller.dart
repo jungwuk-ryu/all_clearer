@@ -18,16 +18,6 @@ class PresetListController extends GetxController {
     _loadPresets();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   void _loadPresets() {
     List<AllClearPreset> list = storage.getPresetList().reversed.toList(growable: false);
     presets.clear();
