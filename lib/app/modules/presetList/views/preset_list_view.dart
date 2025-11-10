@@ -1,6 +1,6 @@
 import 'package:allclearer/app/data/all_clear_preset.dart';
 import 'package:allclearer/app/ui/widgets/border_container.dart';
-import 'package:allclearer/app/ui/widgets/normal_button.dart';
+import 'package:allclearer/app/ui/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -35,15 +35,18 @@ class PresetListView extends GetView<PresetListController> {
         Expanded(
             child: Obx(() => Visibility(
                   visible: controller.presets.isNotEmpty,
-                  replacement:
-                      const Column(
-                        children: [BorderContainer(
+                  replacement: const Column(
+                    children: [
+                      BorderContainer(
                           title: '새로운 올클을 추가해주세요',
-                            body: '저장된 올클이 없어요! \n홈 화면에서 시계를 선택하고 나만의 올클을 만들어보세요!')],
-                      ),
+                          body:
+                              '저장된 올클이 없어요! \n홈 화면에서 시계를 선택하고 나만의 올클을 만들어보세요!')
+                    ],
+                  ),
                   child: Column(
                     children: [
-                      BorderContainer(title: '삭제 버튼 보이기', checkBox: controller.removeMode),
+                      BorderContainer(
+                          title: '삭제 버튼 보이기', checkBox: controller.removeMode),
                       Expanded(child: _listView())
                     ],
                   ),
@@ -60,17 +63,21 @@ class PresetListView extends GetView<PresetListController> {
             return GestureDetector(
               onTap: () => controller.onTapPreset(preset),
               child: Obx(() => BorderContainer(
-                title: preset.name,
-                body: controller.getTimeSyncName(preset.ts).value,
-                child: !controller.isRemoveMode() ? null : Column(
-                  children: [
-                    SizedBox(height: 15.h),
-                    NormalButton(callback: () {
-                      controller.removePreset(preset);
-                    }, text: '삭제')
-                  ],
-                ),
-              )),
+                    title: preset.name,
+                    body: controller.getTimeSyncName(preset.ts).value,
+                    child: !controller.isRemoveMode()
+                        ? null
+                        : Column(
+                            children: [
+                              SizedBox(height: 15.h),
+                              AppButton(
+                                  callback: () {
+                                    controller.removePreset(preset);
+                                  },
+                                  text: '삭제')
+                            ],
+                          ),
+                  )),
             );
           },
         ));
