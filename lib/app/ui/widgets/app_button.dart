@@ -7,12 +7,12 @@ import 'package:get/get.dart';
 
 import '../themes/app_colors.dart';
 
-class NormalButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final Function() callback;
   final String text;
   final RxBool _isLoading = RxBool(false);
 
-  NormalButton({super.key, required this.callback, required this.text});
+  AppButton({super.key, required this.callback, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -61,5 +61,4 @@ class NormalButton extends StatelessWidget {
       _isLoading.value = false;
     }
   }
-
 }

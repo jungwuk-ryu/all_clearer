@@ -10,7 +10,7 @@ import 'package:allclearer/app/data/settings/setting_vib3.dart';
 import 'package:allclearer/app/modules/allclear/widgets/display_values_container.dart';
 import 'package:allclearer/app/modules/allclear/widgets/rxbool_visibility.dart';
 import 'package:allclearer/app/ui/widgets/border_container.dart';
-import 'package:allclearer/app/ui/widgets/normal_button.dart';
+import 'package:allclearer/app/ui/widgets/app_button.dart';
 import 'package:allclearer/app/ui/widgets/padding_column.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -182,7 +182,7 @@ class AllClearView extends GetView<AllClearController> {
       Widget child;
 
       if (!isPreview) {
-        child = NormalButton(
+        child = AppButton(
             callback: () {
               controller.setPreviewMode(true);
             },
