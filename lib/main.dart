@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:allclearer/app/routes/my_route_observer.dart';
+import 'package:allclearer/app/routes/app_route_observer.dart';
 import 'package:allclearer/app/core/bindings/main_bindings.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -52,7 +52,7 @@ Future<void> main() async {
    * 앱 시작
    */
 
-  Get.put(MyRouteObserver());
+  Get.put(AppRouteObserver());
   runApp(ScreenUtilInit(
     designSize: const Size(390, 844),
     minTextAdapt: true,
@@ -64,7 +64,7 @@ Future<void> main() async {
         getPages: AppPages.routes,
         debugShowCheckedModeBanner: false,
         navigatorObservers: [
-          Get.find<MyRouteObserver>(),
+          Get.find<AppRouteObserver>(),
           FirebaseAnalyticsObserver(analytics: analytics)
         ],
         initialBinding: MainBindings(prefs),

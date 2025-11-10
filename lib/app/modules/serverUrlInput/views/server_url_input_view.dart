@@ -1,6 +1,6 @@
 import 'package:allclearer/app/ui/themes/app_colors.dart';
 import 'package:allclearer/app/ui/widgets/border_container.dart';
-import 'package:allclearer/app/ui/widgets/normal_button.dart';
+import 'package:allclearer/app/ui/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,36 +42,44 @@ class ServerUrlInputView extends GetView<ServerUrlInputController> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('최근 사용한 주소', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19.spMin)),
-                Text('꾹 눌러 삭제할 수 있어요', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.spMin, color: AppColors.textBlueGrey))
+                Text('최근 사용한 주소',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 19.spMin)),
+                Text('꾹 눌러 삭제할 수 있어요',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13.spMin,
+                        color: AppColors.textBlueGrey))
               ],
             );
           } else {
             return const SizedBox.shrink();
           }
         }),
-        Expanded(child: Obx(() {
-          List<String> list = controller.getRecentHostList();
+        Expanded(child: Obx(
+          () {
+            List<String> list = controller.getRecentHostList();
 
-          return ListView.builder(
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-            String host = list[index];
-            return GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: () => controller.setHost(host),
-              onLongPress: () {
-                controller.removeHostFromRecentHostList(host);
-                HapticFeedback.lightImpact();
-              },
-              child: Obx(() => BorderContainer(
-                title: host,
-                body: controller.getWebTitle(host).value,
-              )),
-            );
-          });
-        },)),
-        NormalButton(callback: controller.onButtonClick, text: '다음')
+            return ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  String host = list[index];
+                  return GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () => controller.setHost(host),
+                    onLongPress: () {
+                      controller.removeHostFromRecentHostList(host);
+                      HapticFeedback.lightImpact();
+                    },
+                    child: Obx(() => BorderContainer(
+                          title: host,
+                          body: controller.getWebTitle(host).value,
+                        )),
+                  );
+                });
+          },
+        )),
+        AppButton(callback: controller.onButtonClick, text: '다음')
       ],
     );
   }

@@ -34,12 +34,13 @@ class AdaptiveWrap extends StatelessWidget {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: colum1
-          )),
+          Expanded(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: colum1)),
           SizedBox(width: gap),
-          Expanded(child: Column(
+          Expanded(
+              child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: colum2,
           ))

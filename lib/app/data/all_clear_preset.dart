@@ -20,10 +20,7 @@ class AllClearPreset {
   }
 
   String toJson() {
-    return json.encode({
-      'name': name,
-      'time_sync': ts.toJson(),
-      'time': ot.toJson()
-    });
+    return json
+        .encode({'name': name, 'time_sync': ts.toJson(), 'time': ot.toJson()});
   }
 }

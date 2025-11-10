@@ -1,7 +1,7 @@
 import 'package:allclearer/app/sync/device_time_sync.dart';
 import 'package:allclearer/app/sync/ntp_time_sync.dart';
 import 'package:allclearer/app/ui/widgets/adaptive_wrap.dart';
-import 'package:allclearer/app/ui/widgets/normal_button.dart';
+import 'package:allclearer/app/ui/widgets/app_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +54,7 @@ class HomeView extends GetView<HomeController> {
         BorderContainer(
           title: '내가 만든 올클',
           body: '직접 저장한 올클 목록을 확인할 수 있어요',
-          child: NormalButton(
+          child: AppButton(
               callback: () {
                 Get.toNamed(Routes.PRESET_LIST);
               },

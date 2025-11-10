@@ -1,4 +1,3 @@
-
 import 'package:allclearer/app/data/all_clear_preset.dart';
 import 'package:allclearer/app/data/time_set_page_arguments.dart';
 import 'package:allclearer/app/routes/app_pages.dart';
@@ -19,7 +18,8 @@ class PresetListController extends GetxController {
   }
 
   void _loadPresets() {
-    List<AllClearPreset> list = storage.getPresetList().reversed.toList(growable: false);
+    List<AllClearPreset> list =
+        storage.getPresetList().reversed.toList(growable: false);
     presets.clear();
     presets.addAll(list);
   }

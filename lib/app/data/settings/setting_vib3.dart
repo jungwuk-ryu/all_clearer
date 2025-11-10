@@ -7,7 +7,6 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 class SettingVib3 extends ACSetting<RxBool> {
   final RxBool _data = RxBool(true);
 
-
   SettingVib3() {
     _data.listen((p0) => save(json.encode(p0)));
   }
@@ -37,5 +36,4 @@ class SettingVib3 extends ACSetting<RxBool> {
     bool value = bool.parse(data);
     _data.value = value;
   }
-
 }

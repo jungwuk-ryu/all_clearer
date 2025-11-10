@@ -10,11 +10,10 @@ class RxBoolVisibility extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-          () {
+      () {
         if (rx.isFalse) return const SizedBox.shrink();
         return child;
       },
     );
   }
-
 }

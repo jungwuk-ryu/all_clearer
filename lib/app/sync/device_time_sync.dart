@@ -29,5 +29,4 @@ class DeviceTimeSync extends TimeSync {
   String toJson() {
     return json.encode({'id': getID()});
   }
-
 }
