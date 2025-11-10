@@ -5,7 +5,7 @@ import 'dart:io';
 
 import 'package:allclearer/app/data/all_clear_preset.dart';
 import 'package:allclearer/app/data/optional_time.dart';
-import 'package:allclearer/app/routes/my_route_observer.dart';
+import 'package:allclearer/app/routes/app_route_observer.dart';
 import 'package:allclearer/app/services/storage_service.dart';
 import 'package:allclearer/app/sync/time_sync.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +25,7 @@ class HomeController extends GetxController with WidgetsBindingObserver {
   void onInit() {
     super.onInit();
     WidgetsBinding.instance.addObserver(this);
-    MyRouteObserver observer = Get.find<MyRouteObserver>();
+    AppRouteObserver observer = Get.find<AppRouteObserver>();
 
     observer.addListener((route) {
       if (route == null) return;
