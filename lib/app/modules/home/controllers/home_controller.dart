@@ -68,7 +68,8 @@ class HomeController extends GetxController with WidgetsBindingObserver {
 
   void toTimeSetPage(TimeSync ts) {
     StorageService storage = Get.find<StorageService>();
-    AllClearPreset preset = storage.getPreset('') ?? AllClearPreset(name: '', ts: ts, ot: const OptionalTime());
+    AllClearPreset preset = storage.getPreset('') ??
+        AllClearPreset(name: '', ts: ts, ot: const OptionalTime());
     preset.ts = ts;
     Get.toNamed(Routes.TIME_SET, arguments: TimeSetPageArguments(preset));
   }

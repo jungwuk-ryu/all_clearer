@@ -18,23 +18,23 @@ class ServerTimeSync extends TimeSync {
     String? serverTimeStr;
 
     try {
-    if (kIsWeb) {
-      http.Client client = http.Client();
-      http.Request req = http.Request(
-          'GET', Uri.parse("${FirebaseFunctionHelper().baseUrl}?url=$uri"));
+      if (kIsWeb) {
+        http.Client client = http.Client();
+        http.Request req = http.Request(
+            'GET', Uri.parse("${FirebaseFunctionHelper().baseUrl}?url=$uri"));
 
-      final streamedResponse = await client.send(req);
-      final response = await http.Response.fromStream(streamedResponse);
+        final streamedResponse = await client.send(req);
+        final response = await http.Response.fromStream(streamedResponse);
 
-      serverTimeStr = json.decode(response.body)['serverTime'];
-    } else {
-      http.Client client = http.Client();
-      http.Request req = http.Request('HEAD', uri);
-      req.followRedirects = false;
+        serverTimeStr = json.decode(response.body)['serverTime'];
+      } else {
+        http.Client client = http.Client();
+        http.Request req = http.Request('HEAD', uri);
+        req.followRedirects = false;
 
-      final response = await client.send(req);
-      serverTimeStr = response.headers['date'];
-    }
+        final response = await client.send(req);
+        serverTimeStr = response.headers['date'];
+      }
     } catch (e, st) {
       log('$e', error: e, stackTrace: st);
       FirebaseCrashlytics.instance.recordError(e, st);

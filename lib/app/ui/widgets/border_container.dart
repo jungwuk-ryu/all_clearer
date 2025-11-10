@@ -19,19 +19,20 @@ class BorderContainer extends StatelessWidget {
   final RxBool? checkBox;
   final Widget? child;
 
-  const BorderContainer({super.key,
-    this.title = "",
-    this.body = "",
-    this.fontRawSize = 14,
-    this.checkBox,
-    this.verticalMargin = 6.0,
-    this.formatters,
-    this.keyboard,
-    this.backgroundColor,
-    this.textEditingController,
-    this.textFieldHint,
-    this.onTextEditingSubmit,
-    this.child});
+  const BorderContainer(
+      {super.key,
+      this.title = "",
+      this.body = "",
+      this.fontRawSize = 14,
+      this.checkBox,
+      this.verticalMargin = 6.0,
+      this.formatters,
+      this.keyboard,
+      this.backgroundColor,
+      this.textEditingController,
+      this.textFieldHint,
+      this.onTextEditingSubmit,
+      this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -49,23 +50,21 @@ class BorderContainer extends StatelessWidget {
             children: [
               Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _getTitleWidget(),
-                      if (body.isNotEmpty) _getBodyTextWidget(),
-                    ],
-                  )),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _getTitleWidget(),
+                  if (body.isNotEmpty) _getBodyTextWidget(),
+                ],
+              )),
               _getCheckBoxWidget(),
             ],
           ),
           if (textEditingController != null) SizedBox(height: 10.h),
           _getTextFieldWidget(),
-          if (child != null) Column(
-            children: [
-              SizedBox(height: 5.h),
-              child!
-            ],
-          )
+          if (child != null)
+            Column(
+              children: [SizedBox(height: 5.h), child!],
+            )
         ],
       ),
     );

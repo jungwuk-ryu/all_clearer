@@ -19,5 +19,4 @@ class MyRouteObserver extends GetObserver {
   void addListener(Function(Route? route) callback) {
     rxRoute.listen((p0) => callback(p0));
   }
-
 }

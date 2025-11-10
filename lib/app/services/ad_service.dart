@@ -33,7 +33,8 @@ class AdService extends GetxService {
   // From https://github.com/deniza/app_tracking_transparency/issues/47#issuecomment-1751719988
   Future<TrackingStatus?> trackingTransparencyRequest() async {
     await Future.delayed(const Duration(milliseconds: 1000));
-    if (!kIsWeb && Platform.isIOS &&
+    if (!kIsWeb &&
+        Platform.isIOS &&
         int.parse(
                 Platform.operatingSystemVersion.split(' ')[1].split('.')[0]) >=
             14) {

@@ -22,7 +22,8 @@ class OptionalTime {
           minute: int.tryParse('${data[_minuteKey]}'),
           second: int.tryParse("${data[_secondKey]}"));
     } catch (e, st) {
-      log('There is an error (OptionalTime.fromJson)', error: e, stackTrace: st);
+      log('There is an error (OptionalTime.fromJson)',
+          error: e, stackTrace: st);
       FirebaseCrashlytics.instance.recordError(e, st);
       return const OptionalTime();
     }
