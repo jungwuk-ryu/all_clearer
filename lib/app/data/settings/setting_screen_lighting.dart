@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 class SettingScreenLighting extends ACSetting<RxBool> {
   final RxBool _data = RxBool(true);
 
-
   SettingScreenLighting() {
     _data.listen((p0) => save(json.encode(p0)));
   }
@@ -29,9 +28,11 @@ class SettingScreenLighting extends ACSetting<RxBool> {
     int sec = leftTime.inSeconds;
     if (sec < 5 && sec > 0) {
       if (sec == 1) {
-        controller.lighting(Colors.green, delay: const Duration(milliseconds: 970));
+        controller.lighting(Colors.green,
+            delay: const Duration(milliseconds: 970));
       } else {
-        controller.lighting(Colors.red, delay: const Duration(milliseconds: 970));
+        controller.lighting(Colors.red,
+            delay: const Duration(milliseconds: 970));
       }
     }
   }

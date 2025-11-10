@@ -58,7 +58,9 @@ class ServerUrlInputController extends GetxController {
     addHostToRecentHostList(host);
     saveRecentList();
 
-    Get.offAndToNamed(Routes.TIME_SET, arguments: TimeSetPageArguments(AllClearPreset(name: '', ts: sts, ot: OptionalTime())));
+    Get.offAndToNamed(Routes.TIME_SET,
+        arguments: TimeSetPageArguments(
+            AllClearPreset(name: '', ts: sts, ot: OptionalTime())));
   }
 
   Future<ServerTimeSync?> getServerTimeSync(String uriStr) async {
@@ -122,7 +124,7 @@ class ServerUrlInputController extends GetxController {
       _webTitleRxMap[host] = rx;
       _getWebTitle(host, rx);
     }
-    
+
     return rx;
   }
 
@@ -132,7 +134,10 @@ class ServerUrlInputController extends GetxController {
       var response = await http.get(url);
       String htmlStr = response.body;
       if (htmlStr.contains('<title>') && htmlStr.contains('</title>')) {
-        String? title = html.parse(htmlStr.split('<title>')[1].split('</title')[0]).body?.text;
+        String? title = html
+            .parse(htmlStr.split('<title>')[1].split('</title')[0])
+            .body
+            ?.text;
         if (title == null) return;
         rx.value = title.substring(0, min(title.length, 50));
       }

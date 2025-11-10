@@ -29,9 +29,11 @@ class SettingBeep extends ACSetting<RxBool> {
     int sec = leftTime.inSeconds;
     if (sec < 5 && sec > 0) {
       if (sec == 1) {
-        _soundService.beep(SoundFile.beep880, delay: const Duration(milliseconds: 900));
+        _soundService.beep(SoundFile.beep880,
+            delay: const Duration(milliseconds: 900));
       } else {
-        _soundService.beep(SoundFile.beep440, delay: const Duration(milliseconds: 900));
+        _soundService.beep(SoundFile.beep440,
+            delay: const Duration(milliseconds: 900));
       }
     }
   }
@@ -41,5 +43,4 @@ class SettingBeep extends ACSetting<RxBool> {
     bool value = bool.parse(data);
     _data.value = value;
   }
-
 }

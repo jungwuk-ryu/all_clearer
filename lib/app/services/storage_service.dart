@@ -11,7 +11,8 @@ class StorageService extends GetxService {
       'server_url_input_recent_uri_list';
   static const String presetListKey = 'all_clear_preset_list';
   static String getPresetKey(String name) => 'all_clear_preset_$name';
-  static String getLastTimeSetDataKey(String name) => 'time_set_last_data_$name';
+  static String getLastTimeSetDataKey(String name) =>
+      'time_set_last_data_$name';
 
   final SharedPreferences prefs;
 
@@ -86,7 +87,8 @@ class StorageService extends GetxService {
     return prefs.getString(key);
   }
 
-  Future<bool> saveSettingData(String presetName, String settingKey, String data) {
+  Future<bool> saveSettingData(
+      String presetName, String settingKey, String data) {
     String key = getSettingStorageKey(presetName, settingKey);
     log('saving($key) : $data');
     return prefs.setString(key, data);

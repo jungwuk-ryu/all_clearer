@@ -22,5 +22,4 @@ class SettingFastForward extends ACSetting<RxnInt> {
   void loadFromStringData(String data) {
     _data.value = int.tryParse(data);
   }
-
 }

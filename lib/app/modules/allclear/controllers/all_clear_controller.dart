@@ -61,23 +61,24 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
     loadPageTitle();
 
     fastForwardTEC.addListener(() {
-     int v = int.tryParse(fastForwardTEC.text.trim()) ?? 0;
-     if (v < 0) {
-       fastForwardTEC.text = '0';
-       v = 0;
-     } else if (v > 1000) {
-       fastForwardTEC.text = '1000';
-       v = 1000;
-     }
+      int v = int.tryParse(fastForwardTEC.text.trim()) ?? 0;
+      if (v < 0) {
+        fastForwardTEC.text = '0';
+        v = 0;
+      } else if (v > 1000) {
+        fastForwardTEC.text = '1000';
+        v = 1000;
+      }
 
-     fastForward = Duration(milliseconds: v);
-     SettingFastForward setting = getSetting(SettingFastForward) as SettingFastForward;
-     setting.getData().value = v;
+      fastForward = Duration(milliseconds: v);
+      SettingFastForward setting =
+          getSetting(SettingFastForward) as SettingFastForward;
+      setting.getData().value = v;
     });
 
     String? uri;
     if (ts.runtimeType == NTPTimeSync) {
-     uri = (ts as NTPTimeSync).server;
+      uri = (ts as NTPTimeSync).server;
     } else if (ts.runtimeType == ServerTimeSync) {
       uri = (ts as ServerTimeSync).uri.host;
     }
@@ -85,7 +86,8 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
     Map<String, String> params = {'ts': ts.getID()};
     if (uri != null) params['uri'] = uri;
 
-    FirebaseAnalytics.instance.logEvent(name: 'start_timer', parameters: params);
+    FirebaseAnalytics.instance
+        .logEvent(name: 'start_timer', parameters: params);
   }
 
   @override
@@ -103,7 +105,7 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
       _startTimer();
     }
   }
-  
+
   void _initSettings(String? folder) {
     PresetSettingService settingService = Get.find<PresetSettingService>();
     for (ACSetting setting in settingService.getAllSettings(folder)) {
@@ -167,7 +169,7 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
   }
 
   void _tick() {
-    if ( _difference == null) return;
+    if (_difference == null) return;
     DateTime serverTime = DateTime.now().subtract(_difference! - fastForward);
     updateScreenTime(serverTime);
     int sec = serverTime.second;
@@ -194,7 +196,8 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
       isAM = false;
     }
 
-    String newGoalStr = '${isAM ? '오전' : '오후'} $hour시 ${targetDt.minute}분 ${targetDt.second}초';
+    String newGoalStr =
+        '${isAM ? '오전' : '오후'} $hour시 ${targetDt.minute}분 ${targetDt.second}초';
     if (goalStr.value != newGoalStr) goalStr.value = newGoalStr;
   }
 
@@ -217,7 +220,7 @@ class AllClearController extends GetxController with WidgetsBindingObserver {
     await Future.delayed(const Duration(milliseconds: 300));
     _backgroundColor.value = Colors.white;
   }
-  
+
   ACSetting getSetting(Type settingType) {
     return _settings[settingType]!;
   }

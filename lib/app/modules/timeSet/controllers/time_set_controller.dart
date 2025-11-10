@@ -66,7 +66,7 @@ class TimeSetController extends GetxController {
     String? name;
 
     if (save.isTrue) {
-       name = folderNameTEC.text.trim();
+      name = folderNameTEC.text.trim();
       if (name.isEmpty) {
         Get.snackbar('올바르지 않은 올클 이름', '올클 이름을 입력해주세요.');
         return;
@@ -82,7 +82,8 @@ class TimeSetController extends GetxController {
     if (onTime.isTrue) {
       if (minuteV == null && secondV == null) {
         Get.snackbar('정각 모드로 시작', '아무런 값을 입력하지 않아서 정각 알림 모드가 되었습니다.');
-      } else { // 분, 초 값 유효성 확인
+      } else {
+        // 분, 초 값 유효성 확인
         if (minuteV != null && (minuteV < 0 || minuteV > 59)) {
           Get.snackbar('잘못된 값(분)', '유효한 값(0~59)를 입력하세요.');
           return;

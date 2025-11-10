@@ -11,12 +11,13 @@ class NTPTimeSync extends TimeSync {
 
   NTPTimeSync(this.server);
 
-
   @override
   Future<Duration?> getDifference() async {
     try {
       // NTP 서버로부터 시간을 가져옴
-      DateTime ntpTime = await NTP.now(lookUpAddress: server, timeout: const Duration(seconds: 5))..toUtc();
+      DateTime ntpTime = await NTP.now(
+          lookUpAddress: server, timeout: const Duration(seconds: 5))
+        ..toUtc();
       final now = DateTime.now().toUtc();
 
       Duration diff = now.difference(ntpTime);
@@ -51,12 +52,8 @@ class NTPTimeSync extends TimeSync {
 
   @override
   String toJson() {
-    Map data = {
-      'server': server,
-      'id': getID()
-    };
+    Map data = {'server': server, 'id': getID()};
 
     return json.encode(data);
   }
-
 }

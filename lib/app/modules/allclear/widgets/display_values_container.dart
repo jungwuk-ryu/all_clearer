@@ -46,9 +46,9 @@ class DisplayValuesContainer extends StatelessWidget {
             height: 60.h,
             //margin: EdgeInsets.symmetric(horizontal: 1.w),
             decoration: BoxDecoration(
-                color: color,
-                //borderRadius: BorderRadius.circular(12.r),
-                ),
+              color: color,
+              //borderRadius: BorderRadius.circular(12.r),
+            ),
             child: Center(
               child: Text(
                 name,
