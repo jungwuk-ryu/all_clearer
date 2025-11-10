@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class MyRouteObserver extends GetObserver {
+class AppRouteObserver extends GetObserver {
   Rxn<Route> rxRoute = Rxn();
 
   @override
